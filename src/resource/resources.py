@@ -5,7 +5,8 @@ from flask import g, Response, request
 from src import exceptions
 from src.security import authentication
 from src.store import reception
-
+from faker import Faker
+from random import randint
 
 def login_required(f):
     @wraps(f)
@@ -333,3 +334,24 @@ class HealthCheckResource(ResourceBase):
     @not_allowed
     def delete(self):
         pass
+
+class RandomStandResource(ResourceBase):
+    fake = Faker()
+
+    def get(self):
+        target = self.fake.name()
+        punch_quantity = randint(0, 10000000000000000000000000000000)
+
+        return self.response({
+            'target': target,
+            'punch_quantity': punch_quantity
+        })
+
+
+class StarPlatinumResource(RandomStandResource):
+    pass
+
+
+class ZaWarudoResource(RandomStandResource):
+    pass
+

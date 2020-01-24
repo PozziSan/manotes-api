@@ -11,3 +11,5 @@ def create_api(app):
     api.add_resource(resources.LoginResource, '/api/login')
     api.add_resource(resources.AvatarResource, '/api/account/avatar')
     api.add_resource(resources.HealthCheckResource, '/api/healthcheck')
+    api.add_resource(resources.StarPlatinumResource, '/api/star_platinum')
+    api.add_resource(resources.ZaWarudoResource, '/api/za_warudo')
